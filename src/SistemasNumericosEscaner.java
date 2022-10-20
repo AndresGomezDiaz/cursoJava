@@ -1,4 +1,3 @@
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class SistemasNumericosEscaner {
@@ -14,7 +13,7 @@ public class SistemasNumericosEscaner {
         } catch(Exception e) {
             // Podemos usar Excpetion en lugar de la excepcion específica
             // ya que es la mas general
-            System.out.println("ERROR! : Debe ingresar un número entero");
+            System.out.println("ERROR! : Debe ingresar un numero entero");
             main(args);
             System.exit(0);
         }
