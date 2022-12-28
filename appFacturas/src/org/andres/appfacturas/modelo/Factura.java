@@ -1,5 +1,6 @@
 package org.andres.appfacturas.modelo;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Factura {
@@ -72,10 +73,29 @@ public class Factura {
                 .append(this.cliente.getTax())
                 .append("\nDescripción: ")
                 .append(this.description)
+                .append("\n");
+
+        SimpleDateFormat df = new SimpleDateFormat("dd 'de' MMMM, YYYY");
+        sb.append("Fecha Emisión: ")
+                .append(df.format(this.fechaFactura))
                 .append("\n")
                 .append("\n#\tNombre\tCant.\tTotal\n");
 
-
+        for(ItemFactura item: this.items) {
+            if(item == null) {
+                continue;
+            }
+            sb.append(item.getProducto().getCodigo())
+                    .append("\t")
+                    .append(item.getProducto().getNombre())
+                    .append("\t")
+                    .append(item.getCantidad())
+                    .append("\t")
+                    .append(item.calcularImporte())
+                    .append("\n");
+        }
+        sb.append("\nGran Total: ")
+                .append(calcularTotal());
         return sb.toString();
     }
 }

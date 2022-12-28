@@ -4,7 +4,7 @@ public class ItemFactura {
     private int cantidad;
     private Producto producto;
 
-    public ItemFactura() {
+    public ItemFactura(int cantidad, Producto producto) {
         this.cantidad = cantidad;
         this.producto = producto;
     }
