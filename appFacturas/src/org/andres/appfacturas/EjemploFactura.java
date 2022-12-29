@@ -1,9 +1,6 @@
 package org.andres.appfacturas;
 
-import org.andres.appfacturas.modelo.Cliente;
-import org.andres.appfacturas.modelo.Factura;
-import org.andres.appfacturas.modelo.ItemFactura;
-import org.andres.appfacturas.modelo.Producto;
+import org.andres.appfacturas.modelo.*;
 
 import java.util.Scanner;
 
@@ -14,32 +11,34 @@ public class EjemploFactura {
         cliente.setNombre("Andrés Gómez");
 
         Scanner s = new Scanner(System.in);
+
+
         System.out.println("Ingrese una descripción de la factura: ");
-        String desc = s.nextLine();
-        Factura factura = new Factura(desc, cliente);
+        //String desc = s.nextLine();
+        Factura factura = new Factura(s.nextLine(), cliente);
 
         Producto producto;
-        String nombre;
-        float precio;
-        int cantidad;
+        //String nombre;
+        //float precio;
+        //int cantidad;
         System.out.println();
 
-        for (int i = 0; i<5; i++){
+        for (int i = 0; i < 2; i++){
             producto = new Producto();
             System.out.print("Ingrese el producto n " + producto.getCodigo() + ": ");
-            nombre = s.nextLine();
-            producto.setNombre(nombre);
+            //nombre = s.nextLine();
+            producto.setNombre(s.nextLine());
             System.out.print("Ingrese el precio: ");
-            precio = s.nextFloat();
-            producto.setCosto(precio);
+            //precio = s.nextFloat();
+            producto.setCosto(s.nextFloat());
             System.out.print("Ingrese la cantidad de este producto: ");
-            cantidad = s.nextInt();
-            ItemFactura item = new ItemFactura(cantidad, producto);
+            //cantidad = s.nextInt();
+            //ItemFactura item = new ItemFactura(s.nextInt(), producto);
 
-            factura.addItemFactura(item);
+            factura.addItemFactura(new ItemFactura(s.nextInt(), producto));
             System.out.println();
             s.nextLine();
         }
-        System.out.println(factura.generaDetalle());
+        System.out.println(factura);
     }
 }

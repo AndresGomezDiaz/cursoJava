@@ -52,15 +52,16 @@ public class Factura {
     }
     public float calcularTotal() {
         float total = 0.0f;
-        for(ItemFactura item: this.items) {
+        for(int i = 0; i < indiceItems; i++) {
+            // ItemFactura item = this.items[i];
             // Podemos validar si item no es instancia de itemFactura, es decir es nulo
             // if(!(item instanceof ItemFactura)) {
                 //continue;
-            //
-            if(item == null) {
-                continue;
-            }
-            total += item.calcularImporte();
+            //Cambiamos el foreach por un for normal pero iteramos solo los que agreguemos
+            //if(item == null) {
+                //continue;
+            //}
+            total += this.items[i].calcularImporte();
         }
         return total;
     }
@@ -81,10 +82,8 @@ public class Factura {
                 .append("\n")
                 .append("\n#\tNombre\tCant.\tTotal\n");
 
-        for(ItemFactura item: this.items) {
-            if(item == null) {
-                continue;
-            }
+        for(int i = 0; i < indiceItems; i++) {
+            /*
             sb.append(item.getProducto().getCodigo())
                     .append("\t")
                     .append(item.getProducto().getNombre())
@@ -93,9 +92,17 @@ public class Factura {
                     .append("\t")
                     .append(item.calcularImporte())
                     .append("\n");
+             */
+            sb.append(this.items[i].toString())
+                    .append("\n");
         }
         sb.append("\nGran Total: ")
                 .append(calcularTotal());
         return sb.toString();
+    }
+
+    @Override
+    public String toString() {
+        return generaDetalle();
     }
 }

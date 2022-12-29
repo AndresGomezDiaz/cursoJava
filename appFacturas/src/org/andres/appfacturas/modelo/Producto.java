@@ -25,4 +25,11 @@ public class Producto {
     public void setCosto(float costo) {
         this.costo = costo;
     }
+
+    @Override
+    public String toString() {
+        return codigo +
+                "\t" + nombre +
+                "\t" + costo;
+    }
 }
