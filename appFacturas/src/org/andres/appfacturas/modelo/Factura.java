@@ -14,7 +14,7 @@ public class Factura {
     private static int ultimoFolio;
 
     public Factura(){
-        
+
     }
     public Factura(String description, Cliente cliente) {
         this.description = description;
@@ -83,7 +83,7 @@ public class Factura {
         sb.append("Fecha Emisión: ")
                 .append(df.format(this.fechaFactura))
                 .append("\n")
-                .append("\n#\tNombre\tCant.\tTotal\n");
+                .append("\n#\tNombre\tPrecio\tCant.\tTotal\n");
 
         for(int i = 0; i < indiceItems; i++) {
             /*
