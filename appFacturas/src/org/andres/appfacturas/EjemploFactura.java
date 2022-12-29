@@ -2,6 +2,7 @@ package org.andres.appfacturas;
 
 import org.andres.appfacturas.modelo.*;
 
+import javax.swing.plaf.synth.SynthOptionPaneUI;
 import java.util.Scanner;
 
 public class EjemploFactura {
@@ -11,11 +12,19 @@ public class EjemploFactura {
         cliente.setNombre("Andrés Gómez");
 
         Scanner s = new Scanner(System.in);
+        System.out.println("Ingrese cuantos productos va capturar: ");
+        int numProductos = s.nextInt();
+        Factura dataFactura = new Factura();
 
-
+        if(numProductos > dataFactura.MAX_ITEMS_X_PROD) {
+            System.out.println("No puedes capturar mas de " + dataFactura.MAX_ITEMS_X_PROD + "productos.");
+            System.exit(0);
+        }
+        s.nextLine();
         System.out.println("Ingrese una descripción de la factura: ");
         //String desc = s.nextLine();
         Factura factura = new Factura(s.nextLine(), cliente);
+
 
         Producto producto;
         //String nombre;
@@ -23,7 +32,7 @@ public class EjemploFactura {
         //int cantidad;
         System.out.println();
 
-        for (int i = 0; i < 2; i++){
+        for (int i = 0; i < numProductos; i++){
             producto = new Producto();
             System.out.print("Ingrese el producto n " + producto.getCodigo() + ": ");
             //nombre = s.nextLine();
