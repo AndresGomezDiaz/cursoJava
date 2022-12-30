@@ -7,10 +7,21 @@ public class Alumno extends Persona {
     private double calificacionQuimica;
 
     public Alumno() {
-
+        /*
+        * Siempre que yo quiera invocar algún elemento de la clase padre, tiene que ser
+        * declarado antes que cualquier otra declaración de la clase hija, se llama con la
+        * función super();
+        * */
     }
 
+    public Alumno(String nombre, String apellidos) {
+        super(nombre, apellidos);
+    }
 
+    public Alumno(String nombre, String apellidos, int edad, String nombreColegio) {
+        super(nombre, apellidos, edad);
+        this.nombreColegio = nombreColegio;
+    }
 
     public String getNombreColegio() {
         return nombreColegio;
@@ -42,5 +53,16 @@ public class Alumno extends Persona {
 
     public void setCalificacionQuimica(double calificacionQuimica) {
         this.calificacionQuimica = calificacionQuimica;
+    }
+    /*
+    @Override
+    public String Saludar() {
+        return "Hola, soy alumno, mi nombre es: " + getNombre();
+    }
+     */
+
+    @Override
+    public String saludar() {
+        return "Hola, soy alumno, mi nombre es: " + getNombre();
     }
 }

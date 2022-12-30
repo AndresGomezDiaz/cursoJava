@@ -20,6 +20,10 @@ public class EjemploHerencia {
         alumnoInt.setIdiomas(10);
         alumnoInt.setPais("USA");
 
+        //Ejemplo de herencia con sobrecarga de constructores
+        AlumnoInternacional alumnoInt1 = new AlumnoInternacional("Leo", "Messi", 37,
+                            "Colegio del Futbol", "Argemtina");
+
 
         Profesor profesor = new Profesor();
         profesor.setNombre("Arturo");
@@ -39,6 +43,10 @@ public class EjemploHerencia {
             System.out.println(hija + " es una clase hija de la clase padre " + padre);
             clase = clase.getSuperclass();
         }
+
+        System.out.println(alumno.saludar());
+        System.out.println(profesor.saludar());
+        System.out.println(alumnoInt.saludar());
 
     }
 

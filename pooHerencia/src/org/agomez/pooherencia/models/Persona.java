@@ -12,6 +12,15 @@ public class Persona {
     public Persona() {
 
     }
+    public Persona(String nombre, String apellidos) {
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+    }
+
+    public Persona(String nombre, String apellidos, int edad) {
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+    }
 
     public String getClavePersona() {
         return clavePersona;
@@ -52,4 +61,9 @@ public class Persona {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public String saludar() {
+        return "Hola que tal!";
+    }
+
 }
