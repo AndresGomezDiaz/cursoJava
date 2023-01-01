@@ -1,15 +1,15 @@
 package org.agomez.pooclasesabstractas.form.elementos;
 
-public class textAreaForm  extends ElementoForm{
+public class TextAreaForm extends ElementoForm{
 
     private int filas;
     private int columnas;
 
-    public textAreaForm(String nombre) {
+    public TextAreaForm(String nombre) {
         super(nombre);
     }
 
-    public textAreaForm(String nombre, int filas, int columnas) {
+    public TextAreaForm(String nombre, int filas, int columnas) {
         super(nombre);
         this.filas = filas;
         this.columnas = columnas;

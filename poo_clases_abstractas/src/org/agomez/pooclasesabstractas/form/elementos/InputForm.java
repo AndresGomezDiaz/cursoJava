@@ -1,13 +1,13 @@
 package org.agomez.pooclasesabstractas.form.elementos;
 
-public class inputForm extends ElementoForm {
+public class InputForm extends ElementoForm {
     private String tipo = "text";
 
-    public inputForm (String nombre) {
+    public InputForm(String nombre) {
         super(nombre);
     }
 
-    public inputForm (String nombre, String tipo) {
+    public InputForm(String nombre, String tipo) {
         super(nombre);
         this.tipo = tipo;
     }
