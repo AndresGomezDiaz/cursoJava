@@ -6,6 +6,7 @@ import org.agomez.pooclasesabstractas.form.elementos.SelectForm;
 import org.agomez.pooclasesabstractas.form.elementos.TextAreaForm;
 import org.agomez.pooclasesabstractas.form.elementos.select.Opcion;
 
+import javax.swing.text.Element;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -37,8 +38,22 @@ public class EjemploForm {
         Opcion lang1 = new Opcion("1", "Java");
         Opcion lang2 = new Opcion("2", "Javascript");
 
+        /*
+        * Esto es una implementación de clase anónima
+        * estas clases se pueden instanciar una vez, pero solo se pueden usar
+        * dentro del scope donde se declara.
+        * Y extienden de una clase padre
+        * */
+        ElementoForm saludar = new ElementoForm("saludo") {
+            @Override
+            public String dibujarHtml() {
+                return "<input disabled name= '" + this.nombre + "' value=\""+ this.valor + "\">";
+            }
+        };
+        saludar.setValor("Hola, que tal esta es la información de las clases: ");
+
         lenguaje.addOpcion(lang1)
-                .addOpcion(lang2)
+                .addOpcion(lang2.setSelected())
                 .addOpcion(new Opcion("3", "PHP"))
                 .addOpcion(new Opcion("4","Javascript"));
 
@@ -46,11 +61,11 @@ public class EjemploForm {
         password.setValor("12345");
         email.setValor("jonh.doe@correo.com");
         edad.setValor("35");
-        lang1.setSelected(true);
+        // lang1.setSelected(true);
         experiencia.setValor("Mas de 10 años de experiencia programando sistemas");
 
         List<ElementoForm> elementos = Arrays.asList(username, password,
-                            email, edad, experiencia, lenguaje);
+                            email, edad, experiencia, lenguaje, saludar);
         /*
         En lugagar de usar un array list podemos usar Arrays.asList
         y esa función internamente crea un ArrayList con los elementos

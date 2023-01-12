@@ -37,4 +37,13 @@ public class Opcion {
     public void setSelected(boolean selected) {
         this.selected = selected;
     }
+
+    /*
+    * Realizamos sobrecarga para asignar el selected de forma
+    * mas directa
+    * */
+    public Opcion setSelected() {
+        this.selected = true;
+        return this;
+    }
 }
