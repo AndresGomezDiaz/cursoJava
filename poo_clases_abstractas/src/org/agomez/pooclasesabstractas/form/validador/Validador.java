@@ -4,7 +4,7 @@ abstract public class Validador {
 
     protected String mensaje;
     public abstract void setMensaje(String mensaje);
-    abstract public String getMensaje();
-    abstract public boolean esValido(String valor);
+    public abstract String getMensaje();
+    public abstract boolean esValido(String valor);
 
 }

@@ -12,6 +12,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.sql.Array;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -30,6 +31,10 @@ public class EjemploLeerXml {
         System.out.println(negocio);
         System.out.println(accion);
         System.out.println(moneda);
+
+        String bloqueos = "DOM_CP,NOM,APMAT,APPAT,DOM_CALLE,DOM_PAIS,ID_TIPO,DOM_COL,DOM_EDO,DOM_NEXT,DOM_POB,FNAC,ID_FOLIO,NAL";
+        String[] listadoBloqueo = bloqueos.split(",");
+        System.out.println(listadoBloqueo[0]);
     }
 
     public static Document leerArchivo(String ruta) {
