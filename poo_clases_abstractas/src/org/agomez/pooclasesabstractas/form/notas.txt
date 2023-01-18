@@ -1,0 +1,10 @@
+** Una interfaz es para un diseño, las clases implementan comportamientos
+la diferencia con las clases abstractas, es que una clase abstracta
+le dice a los elementos lo que son y lo que hacen, y las interfaces pueden
+ser cualquier tipo de objeto agrupados bajo un mismo comportamiento
+(contrato de implementacion) y no lleva la declaración de abstract
+
+Ejemplo: La interfaz Volar puede implemntarse a un avion, un ave, un insecto
+todos tienen el mismo comportamiento/accion pero son objetos con características
+completamente diferentes.
+

@@ -1,6 +1,8 @@
 package org.agomez.pooclasesabstractas.form.elementos;
 
+import org.agomez.pooclasesabstractas.form.validador.LargoValidador;
 import org.agomez.pooclasesabstractas.form.validador.Validador;
+import org.agomez.pooclasesabstractas.form.validador.mensaje.MensajeFormateable;
 
 import javax.swing.text.Element;
 import java.util.ArrayList;
@@ -32,7 +34,13 @@ abstract public class ElementoForm {
     public boolean esValido() {
         for(Validador v: this.validadores) {
             if(!v.esValido(this.valor)) {
-                this.errores.add(String.format(v.getMensaje(), nombre));
+                if(v instanceof MensajeFormateable) {
+                    this.errores.add(((LargoValidador) v).getMensajeFormateado(nombre));
+                }
+                else {
+                    this.errores.add(String.format(v.getMensaje(), nombre));
+                }
+
             }
         }
         return this.errores.isEmpty();

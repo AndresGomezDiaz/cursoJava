@@ -1,11 +1,13 @@
 package org.agomez.pooclasesabstractas.form.validador;
 
-public class LargoValidador extends Validador{
+import org.agomez.pooclasesabstractas.form.validador.mensaje.MensajeFormateable;
+
+public class LargoValidador extends Validador implements MensajeFormateable {
     /*
     * Podemos usar String Format para reemplazar en la cadena los valores
     * de mínimo y máximo, por tanto este string es una plantilla
     * */
-    protected String mensaje = "El campo debe tener mínimo %d y máximo %d caracteres";
+    protected String mensaje = "El campo %s debe tener mínimo %d y máximo %d caracteres";
     private int min;
     private int max = Integer.MAX_VALUE;
 
@@ -38,7 +40,7 @@ public class LargoValidador extends Validador{
 
     @Override
     public boolean esValido(String valor) {
-        this.mensaje = String.format(this.mensaje, this.min, this.max);
+        // this.mensaje = String.format(this.mensaje, this.min, this.max);
         if(valor == null) {
             return true;
         }
@@ -46,4 +48,8 @@ public class LargoValidador extends Validador{
         return (largo >= min && largo <= max);
     }
 
+    @Override
+    public String getMensajeFormateado(String campo) {
+        return String.format(this.mensaje, campo, this.min, this.max);
+    }
 }
