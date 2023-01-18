@@ -8,3 +8,8 @@ Ejemplo: La interfaz Volar puede implemntarse a un avion, un ave, un insecto
 todos tienen el mismo comportamiento/accion pero son objetos con características
 completamente diferentes.
 
+Una clase puede implementar varias interfaces.
+
+De igual forma se describe como una colección de métodos abstractos (sin implementar)
+y de valores constantes que pueden realizar un objeto determinado
+
