@@ -5,6 +5,7 @@ import org.agomez.pooclasesabstractas.form.elementos.InputForm;
 import org.agomez.pooclasesabstractas.form.elementos.SelectForm;
 import org.agomez.pooclasesabstractas.form.elementos.TextAreaForm;
 import org.agomez.pooclasesabstractas.form.elementos.select.Opcion;
+import org.agomez.pooclasesabstractas.form.validador.*;
 
 import javax.swing.text.Element;
 import java.util.ArrayList;
@@ -28,12 +29,23 @@ public class EjemploForm {
         */
 
         InputForm username = new InputForm("username");
+        username.addValidador(new RequeridoValidador());
+
         InputForm password = new InputForm("password", "password");
+        password.addValidador(new RequeridoValidador())
+                .addValidador(new LargoValidador(6,12));
+
         InputForm email = new InputForm("email", "email");
+        email.addValidador(new RequeridoValidador())
+                .addValidador(new EmailValidador());
+
         InputForm edad = new InputForm("edad", "number");
+        edad.addValidador(new RequeridoValidador())
+                .addValidador(new NumeroValidador());
 
         TextAreaForm experiencia = new TextAreaForm("experiencia", 5 , 9);
         SelectForm lenguaje = new SelectForm("lenguaje");
+        lenguaje.addValidador(new NoNulo());
 
         Opcion lang1 = new Opcion("1", "Java");
         Opcion lang2 = new Opcion("2", "Javascript");
@@ -58,8 +70,8 @@ public class EjemploForm {
                 .addOpcion(new Opcion("4","Javascript"));
 
         username.setValor("jonh.doe");
-        password.setValor("12345");
-        email.setValor("jonh.doe@correo.com");
+        password.setValor("12u");
+        email.setValor("andres@recaudia.com");
         edad.setValor("35");
         // lang1.setSelected(true);
         experiencia.setValor("Mas de 10 años de experiencia programando sistemas");
@@ -82,14 +94,17 @@ public class EjemploForm {
 
         // A partir de java 8 podemos usar sintaxis de Lamdas
 
-        elementos.forEach(e -> {
-            System.out.println(e.dibujarHtml() + "<br />");
+        elementos.forEach(elForm -> {
+            System.out.println(elForm.dibujarHtml() + "<br />");
+            if(!elForm.esValido()) {
+                // En expresiones Lamda si solo tiene una linea se pueden omitir las llaves
+                // e.getErrores().forEach(err -> System.out.println("Tenemos error: " + err));
+                // Podemos usar el siguiente argumento se puede resumir usando un atajo
+                // Solo aplica cuando se asume que solo un argumento se pasa dentro del método
+                // por eso se declara con :: Metodo de referencia o referenciado
+                // e.getErrores().forEach(System.out::println);
+                elForm.getErrores().forEach(err -> System.out.println("Tenemos error en el campo " + elForm.getNombre() + ": " + err));
+            }
         });
-
-        /*
-        for(ElementoForm e : elementos) {
-            System.out.println(e.dibujarHtml() + "< /br>");
-        }
-         */
     }
 }

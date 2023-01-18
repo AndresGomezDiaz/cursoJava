@@ -35,7 +35,6 @@ abstract public class ElementoForm {
                 this.errores.add(v.getMensaje());
             }
         }
-        // return this.errores.size() == 0;
         return this.errores.isEmpty();
     }
 
@@ -43,9 +42,14 @@ abstract public class ElementoForm {
         this.valor = valor;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
     // Solo pueden existir metodos abstractos dentro de una clase abstracta
     // Los métodos abstractos solo se declaran, la implementación
     // viene en las clases hijas
     public abstract String dibujarHtml();
+
 
 }
