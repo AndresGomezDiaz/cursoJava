@@ -32,7 +32,7 @@ abstract public class ElementoForm {
     public boolean esValido() {
         for(Validador v: this.validadores) {
             if(!v.esValido(this.valor)) {
-                this.errores.add(v.getMensaje());
+                this.errores.add(String.format(v.getMensaje(), nombre));
             }
         }
         return this.errores.isEmpty();

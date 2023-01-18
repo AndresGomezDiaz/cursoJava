@@ -1,7 +1,7 @@
 package org.agomez.pooclasesabstractas.form.validador;
 
 public class EmailValidador  extends Validador{
-    protected String mensaje = "Formato de email inválido";
+    protected String mensaje = "Formato del email es inválido";
     private final static String EMAIL_REGEX = "^(.+)@(.+)$";
 
     @Override

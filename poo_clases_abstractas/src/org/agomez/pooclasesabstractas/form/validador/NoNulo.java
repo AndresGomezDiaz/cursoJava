@@ -1,7 +1,11 @@
 package org.agomez.pooclasesabstractas.form.validador;
 
 public class NoNulo extends Validador{
-    protected String mensaje = "El campo no puede ser nulo";
+    /*
+    * Para que sea mas estructurado el nombre del campo lo vamos a pasar
+    * por plantilla/patron/wilcard
+    * */
+    protected String mensaje = "El campo %s no puede ser nulo";
 
     @Override
     public void setMensaje(String mensaje) {

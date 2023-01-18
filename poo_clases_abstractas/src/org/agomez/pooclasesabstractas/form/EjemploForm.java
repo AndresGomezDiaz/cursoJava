@@ -70,9 +70,9 @@ public class EjemploForm {
                 .addOpcion(new Opcion("4","Javascript"));
 
         username.setValor("jonh.doe");
-        password.setValor("12u");
+        password.setValor("12uaE3RTm9");
         email.setValor("andres@recaudia.com");
-        edad.setValor("35");
+        edad.setValor("L");
         // lang1.setSelected(true);
         experiencia.setValor("Mas de 10 años de experiencia programando sistemas");
 

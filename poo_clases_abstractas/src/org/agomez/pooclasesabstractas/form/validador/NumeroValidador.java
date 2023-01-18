@@ -2,7 +2,7 @@ package org.agomez.pooclasesabstractas.form.validador;
 
 public class NumeroValidador extends Validador{
 
-    protected String mensaje = "El atributo debe ser número";
+    protected String mensaje = "El atributo del campo %s debe ser número";
 
     @Override
     public void setMensaje(String mensaje) {
