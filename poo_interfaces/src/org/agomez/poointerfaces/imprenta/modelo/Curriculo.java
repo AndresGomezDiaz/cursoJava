@@ -5,11 +5,11 @@ import java.util.List;
 
 public class Curriculo extends Hoja implements Imprimible{
 
-    private String persona;
+    private Persona persona;
     private String carrera;
     private List<String> experiencias;
 
-    public Curriculo(String persona, String carrera, String contenido) {
+    public Curriculo(Persona persona, String carrera, String contenido) {
         super(contenido);
         this.persona = persona;
         this.carrera = carrera;
@@ -30,6 +30,27 @@ public class Curriculo extends Hoja implements Imprimible{
                 .append("\n").append("Profesion: ")
                 .append(this.carrera).append("\n")
                 .append("Experiencia: \n");
+        /*
+        for(String exp: this.experiencias) {
+            sb.append("- ").append(exp).append("\n");
+        }
+        */
+
+        experiencias.forEach(exp -> {
+            sb.append("- ").append(exp).append("\n");
+        });
+        return sb.toString();
+    }
+
+    @Override
+    public String imprimirColor() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(persona)
+                .append("\n")
+                .append("Resumen en Color: ").append(this.contenido)
+                .append("\n").append("Profesion Color: ")
+                .append(this.carrera).append("\n")
+                .append("Experiencia Color: \n");
         /*
         for(String exp: this.experiencias) {
             sb.append("- ").append(exp).append("\n");
