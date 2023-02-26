@@ -2,7 +2,7 @@ package org.agomez.modelo;
 
 public class Alumno implements Comparable<Alumno> {
     private String nombre;
-    private int calificacion;
+    private Integer calificacion;
 
     /*
     * Debido a que int es una variable de tipo primitivo
@@ -15,7 +15,7 @@ public class Alumno implements Comparable<Alumno> {
 
     }
 
-    public Alumno(String nombre, int calificacion) {
+    public Alumno(String nombre, Integer calificacion) {
         this.nombre = nombre;
         this.calificacion = calificacion;
     }
@@ -28,32 +28,31 @@ public class Alumno implements Comparable<Alumno> {
         this.nombre = nombre;
     }
 
-    public int getCalificacion() {
+    public Integer getCalificacion() {
         return calificacion;
     }
 
-    public void setCalificacion(int calificacion) {
+    public void setCalificacion(Integer calificacion) {
         this.calificacion = calificacion;
     }
 
     @Override
     public String toString() {
-        return "Alumno " + nombre + " y su calificación es: " + calificacion;
+        return "\n Alumno " + nombre + " y su calificación es: " + calificacion;
     }
 
     @Override
     public int compareTo(Alumno a) {
-        /*
-        * Si queremos comparar por nombre:
+
+        // Si queremos comparar por nombre:
         if(this.nombre == null) {
             // Esto es para evitar un NullPointerException
             return 0;
         }
         return this.nombre.compareTo(a.nombre);
 
-         */
         // Si queremos seguir manejando int, se tiene que hacer de la siguiente manera:
-
+        /*
         if(this.calificacion == a.calificacion) {
             return 0;
         }
@@ -62,7 +61,7 @@ public class Alumno implements Comparable<Alumno> {
         } else {
             return -1;
         }
-
+        */
         // De lo contrario usamos el mismo método que se usó en el nombre
 
     }
