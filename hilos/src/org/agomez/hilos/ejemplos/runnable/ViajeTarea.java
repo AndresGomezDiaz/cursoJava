@@ -22,6 +22,5 @@ public class ViajeTarea implements Runnable{
             }
         }
         System.out.println("Finalmente me voy de viaje a " + nombre);
-
     }
 }
