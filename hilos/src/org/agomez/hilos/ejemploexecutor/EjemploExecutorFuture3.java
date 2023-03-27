@@ -14,7 +14,7 @@ public class EjemploExecutorFuture3 {
          *
          * Debido a que son 2 tareas sincronizadas, el tamaño mínimo tiempre que ser de 2
          * de lo contrario como la tarea está en espera nunca pasará al consumo del cliente
-         * 
+         *
          * */
         ExecutorService executor = Executors.newFixedThreadPool(2);
 
