@@ -1,11 +1,14 @@
 package org.agomez.java8.lambda;
 
+import org.agomez.java8.lambda.models.Usuario;
+
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
+import java.util.function.Supplier;
 
 public class EjemploConsumer {
     public static void main(String[] args) {
@@ -41,5 +44,20 @@ public class EjemploConsumer {
         * de java para imprimir los nombres.
         * */
 
+        Usuario usuario = new Usuario();
+
+        BiConsumer<Usuario, String> asignaNombre = (persona, nombreUsuario) -> {
+            persona.setNombre(nombreUsuario);
+        };
+        asignaNombre.accept(usuario, "Miguel");
+        System.out.println("#############");
+        System.out.println("Nombre del usuario: " + usuario.getNombre());
+
+        System.out.println("*********************");
+
+        Supplier<String> proveedor = () -> {
+            return "Hola mundo";
+        };
+        System.out.println(proveedor.get());
     }
 }
