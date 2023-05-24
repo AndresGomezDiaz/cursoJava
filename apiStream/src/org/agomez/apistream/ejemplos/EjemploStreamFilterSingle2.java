@@ -11,9 +11,16 @@ public class EjemploStreamFilterSingle2 {
                 .of("Pato Hernandez", "Paco Guzman", "Miguel Rojas", "Arturo Fuentes",
                         "Pepe García", "Paco Rojas")
                 .map(nombre-> new Usuario(nombre.split(" ")[0], nombre.split(" ")[1]))
-                .filter(u -> u.getId().equals(6))
-                .findFirst().get();
-
+                .peek(System.out::println)
+                .filter(u -> u.getId().equals(20))
+                .findFirst().orElseGet( () -> new Usuario("Jorge", "Campos"));
+        /*
+        * Si colocamos un peek antes del filter
+        * lo que hace es ir recorriendo y se sale en cuanto
+        * encuentra el registro solicitado por el filter
+        * con esto se corrobora que findFirst es un operador terminal
+        *
+        * */
         System.out.println(usuario);
     }
 
