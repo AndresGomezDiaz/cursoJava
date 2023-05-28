@@ -1,9 +1,12 @@
 package com.agomez.optional.modelo;
 
+import java.util.Optional;
+
 public class Computadora {
     private String nombre;
     private String modelo;
 
+    private Procesador procesador;
     public Computadora() {
 
     }
@@ -26,6 +29,14 @@ public class Computadora {
 
     public void setModelo(String modelo) {
         this.modelo = modelo;
+    }
+
+    public Optional<Procesador> getProcesador() {
+        return Optional.ofNullable(procesador);
+    }
+
+    public void setProcesador(Procesador procesador) {
+        this.procesador = procesador;
     }
 
     @Override

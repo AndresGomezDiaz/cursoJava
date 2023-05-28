@@ -31,6 +31,7 @@ public class EjemploOptional {
         System.out.println(opt.isEmpty());
         opt.ifPresent(valor -> System.out.println("Hola " + valor));
         //El método ifPresentOrElse solo está habilitado de java 9 en adelante
+
         opt.ifPresentOrElse(valor -> System.out.println("Hola " + valor), () -> {
             System.out.println("No está presente");
         });

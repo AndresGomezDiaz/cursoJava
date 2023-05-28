@@ -10,7 +10,7 @@ public class EjemploRepositorio {
     public static void main(String[] args) {
 
         Repositorio<Computadora> repositorio = new ComputadoraRepositorio();
-        Optional<Computadora> pc = repositorio.filtrar("asus");
+        // Optional<Computadora> pc = repositorio.filtrar("asus");
 
         /*
         if(pc != null) {
