@@ -26,7 +26,7 @@ public class EjemploRepositorioMapFilter {
 
         System.out.println(pc1);
 
-        // Si usamos flatMap, podemos usar optional para que podamos usar 
+        // Si usamos flatMap, podemos usar optional para que podamos usar
 
 
     }
