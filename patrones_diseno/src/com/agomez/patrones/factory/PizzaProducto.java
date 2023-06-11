@@ -3,13 +3,13 @@ package com.agomez.patrones.factory;
 import java.util.ArrayList;
 import java.util.List;
 
-abstract public class PizaProducto {
+abstract public class PizzaProducto {
     protected String nombre;
     protected String masa;
     protected String salsa;
     protected List<String> ingredientes;
 
-    public PizaProducto() {
+    public PizzaProducto() {
         this.ingredientes = new ArrayList<>();
     }
 
@@ -25,6 +25,10 @@ abstract public class PizaProducto {
 
     public void empaquetar() {
         System.out.println(" Poniendo la pizza en su caja de cartón");
+    }
+
+    public String getNombre() {
+        return nombre;
     }
 
     @Override
