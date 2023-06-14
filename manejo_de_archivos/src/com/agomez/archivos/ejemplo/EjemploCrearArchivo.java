@@ -7,6 +7,8 @@ public class EjemploCrearArchivo {
         String nombreArchivo = "D:\\archivosTest\\java.txt";
 
         ArchivoServicio service = new ArchivoServicio();
-        service.crearArchivo2(nombreArchivo);
+        // service.crearArchivo2(nombreArchivo);
+        String texto = service.leerArchivo1(nombreArchivo);
+        System.out.println(texto);
     }
 }
