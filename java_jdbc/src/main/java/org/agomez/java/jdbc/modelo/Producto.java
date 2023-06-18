@@ -11,7 +11,7 @@ public class Producto {
     public Producto() {
 
     }
-    public Producto(String nombre, Number precio, Date fecha) {
+    public Producto(Long id, String nombre, Number precio, Date fecha) {
         this.nombre = nombre;
         this.precio = precio;
         this.fecha = fecha;
@@ -21,6 +21,9 @@ public class Producto {
         return id;
     }
 
+    public void setId(Long id){
+        this.id = id;
+    }
     public String getNombre() {
         return nombre;
     }
@@ -43,5 +46,13 @@ public class Producto {
 
     public void setFecha(Date fecha) {
         this.fecha = fecha;
+    }
+
+    @Override
+    public String toString() {
+        return id + "|"
+                + nombre + "|"
+                + precio + "|"
+                + fecha;
     }
 }
