@@ -1,5 +1,6 @@
 package org.agomez.java.jdbc.repositorio;
 
+import org.agomez.java.jdbc.modelo.Categoria;
 import org.agomez.java.jdbc.modelo.Producto;
 import org.agomez.java.jdbc.util.ConexionDB;
 
@@ -14,8 +15,12 @@ public class ProductoRepositorioImpl implements Repositorio{
     @Override
     public List listar() {
         List<Producto> productos = new ArrayList<>();
+        String query = "SELECT a.id, a.nombre AS producto, a.precio, a.fecha_registro," +
+                                "a.categoria_id, b.nombre AS categoria" +
+                        " FROM producto a INNER JOIN categoria b ON a.categoria_id = b.id;";
+        System.out.println(query);
         try(Statement smtmp = getConnection().createStatement();
-            ResultSet rs = smtmp.executeQuery("SELECT * FROM producto;")
+            ResultSet rs = smtmp.executeQuery(query)
         ){
             while(rs.next()) {
                 Producto p = crearProducto(rs);
@@ -30,7 +35,10 @@ public class ProductoRepositorioImpl implements Repositorio{
     @Override
     public Object porId(Long id) {
         Producto producto = null;
-        String query = "SELECT * FROM producto WHERE id = ?;";
+        String query = "SELECT a.id, a.nombre AS producto, a.precio, a.fecha_registro," +
+                "a.categoria_id, b.nombre AS categoria" +
+                " FROM producto a INNER JOIN categoria b ON a.categoria_id = b.id" +
+                " WHERE a.id = ?";
         try(PreparedStatement psmtp = getConnection().prepareStatement(query)){
             psmtp.setLong(1, id);
             ResultSet rs = psmtp.executeQuery();
@@ -49,16 +57,17 @@ public class ProductoRepositorioImpl implements Repositorio{
     public void guardar(Producto producto) {
         String query = "";
         if(producto.getId() != null && producto.getId() > 0){
-            query = "UPDATE producto SET nombre = ?, precio = ? WHERE id = ?;";
+            query = "UPDATE producto SET nombre = ?, precio = ?, categoria_id = ? WHERE id = ?;";
         } else {
-            query = "INSERT INTO producto (nombre, precio, fecha_registro) " +
-                    "VALUES(?, ?, NOW())";
+            query = "INSERT INTO producto (nombre, precio, categoria_id, fecha_registro) " +
+                    "VALUES(?, ?, ?, NOW())";
         }
         try(PreparedStatement psmtp = getConnection().prepareStatement(query)){
             psmtp.setString(1, producto.getNombre());
             psmtp.setDouble(2, producto.getPrecio());
+            psmtp.setDouble(3, producto.getCategoria().getId());
             if(producto.getId() != null && producto.getId() > 0){
-                psmtp.setLong(3, producto.getId());
+                psmtp.setLong(4, producto.getId());
             }
             /*
             * Si tuvieramos que mandar la fecha de registro tendríamos que pasarlo de la siguiente manera:
@@ -87,9 +96,13 @@ public class ProductoRepositorioImpl implements Repositorio{
     private static Producto crearProducto(ResultSet rs) throws SQLException {
         Producto p = new Producto();
         p.setId((long) rs.getInt("id"));
-        p.setNombre(rs.getString("nombre"));
+        p.setNombre(rs.getString("producto"));
         p.setPrecio(rs.getDouble("precio"));
         p.setFecha(rs.getDate("fecha_registro"));
+        Categoria c = new Categoria();
+        c.setId(rs.getLong("categoria_id"));
+        c.setNombre(rs.getString("categoria"));
+        p.setCategoria(c);
         return p;
     }
 }
