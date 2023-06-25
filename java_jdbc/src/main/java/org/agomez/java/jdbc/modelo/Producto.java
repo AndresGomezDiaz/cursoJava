@@ -5,13 +5,13 @@ import java.util.Date;
 public class Producto {
     private Long id;
     private String nombre;
-    private Number precio;
+    private Double precio;
     private Date fecha;
 
     public Producto() {
 
     }
-    public Producto(Long id, String nombre, Number precio, Date fecha) {
+    public Producto(String nombre, Double precio, Date fecha) {
         this.nombre = nombre;
         this.precio = precio;
         this.fecha = fecha;
@@ -32,11 +32,11 @@ public class Producto {
         this.nombre = nombre;
     }
 
-    public Number getPrecio() {
+    public Double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(Number precio) {
+    public void setPrecio(Double precio) {
         this.precio = precio;
     }
 

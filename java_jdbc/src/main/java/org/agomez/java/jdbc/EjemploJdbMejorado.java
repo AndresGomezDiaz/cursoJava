@@ -15,7 +15,19 @@ public class EjemploJdbMejorado {
             Repositorio<Producto> repositorio = new ProductoRepositorioImpl();
             repositorio.listar().forEach(System.out::println);
             System.out.println("########## Buscar por Id ##########");
-            System.out.println(repositorio.porId(2L));
+            Long idBusqueda = 3L;
+            if (repositorio.porId(idBusqueda) == null) {
+                System.out.println("No existe el registro buscado");
+            } else{
+                System.out.println(repositorio.porId(3L));
+            }
+            System.out.println("########## Creamos un producto ##########");
+            Producto p = new Producto();
+            p.setNombre("TECLADO");
+            p.setPrecio(150.0);
+            repositorio.guardar(p);
+            repositorio.listar().forEach(System.out::println);
+
 
         } catch(SQLException e) {
             e.printStackTrace();
