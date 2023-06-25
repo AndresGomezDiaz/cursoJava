@@ -10,10 +10,13 @@ public class ConexionDB {
     private static String pass = "mysql";
     private static Connection conn;
     // Aquí estamos usando un método Singleton (una sola conexión por contexto)
+    // Para eliminar el Singleton, solo se quita la reutilización de la conexión
     public static Connection getInstance() throws SQLException {
+        /*
         if(conn == null){
             conn = DriverManager.getConnection(url, username, pass);
         }
-        return conn;
+         */
+        return DriverManager.getConnection(url, username, pass);
     }
 }
